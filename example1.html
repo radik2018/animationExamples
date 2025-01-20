@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Horizontal Scroll</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            width: 400%;
+            height: 100vh;
+            transition: transform 2s ease-in-out;
+        }
+
+        .section {
+            flex: 0 0 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .section:nth-child(1) {
+            background-color: #1abc9c;
+        }
+
+        .section:nth-child(2) {
+            background-color: #3498db;
+        }
+
+        .section:nth-child(3) {
+            background-color: #9b59b6;
+        }
+
+        .section:nth-child(4) {
+            background-color: #e74c3c;
+        }
+
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <button onclick="scrollToSection(0)">Section 1</button>
+        <button onclick="scrollToSection(1)">Section 2</button>
+        <button onclick="scrollToSection(2)">Section 3</button>
+        <button onclick="scrollToSection(3)">Section 4</button>
+    </div>
+
+    <div class="horizontal-scroll">
+        <div class="section">Welcome to Section 1</div>
+        <div class="section">Discover Section 2</div>
+        <div class="section">Explore Section 3</div>
+        <div class="section">Enjoy Section 4</div>
+    </div>
+
+    <script>
+        function scrollToSection(index) {
+            const scrollContainer = document.querySelector('.horizontal-scroll');
+            scrollContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
+    </script>
+</body>
+</html>

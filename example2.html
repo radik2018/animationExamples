@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Move Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ecf0f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .move {
+      width: 250px;
+      height: 150px;
+      background-color: #3498db;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.6s ease, background-color 0.3s ease;
+    }
+
+    .move:hover {
+      transform: translateX(200px);
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="move">
+    <h2>Могу двигаться</h2>
+  </div>
+
+</body>
+</html>

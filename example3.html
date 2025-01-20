@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      height: 300vh;
+      padding: 50px;
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(100px);
+      transition: opacity 2s ease-out, transform 2s ease-out;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 2s ease-in, transform 2s ease-in;
+    }
+
+    .parallax {
+      background: url('https://source.unsplash.com/random/1600x900') no-repeat center center fixed;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .parallax h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    .animation-box {
+      background-color: #3498db;
+      padding: 20px;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="parallax">
+    <h1>Параллакс Эффект</h1>
+  </div>
+
+  <div class="content">
+    <h1>Прокрутите вниз, чтобы увидеть анимацию</h1>
+    <div id="animateMe" class="hidden">
+      <div class="animation-box">
+        <h2>Этот элемент появляется и исчезает при прокрутке</h2>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function() {
+      const element = document.getElementById('animateMe');
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (rect.top < windowHeight && scrollTop > lastScrollTop) {
+        element.classList.add('visible');
+        element.classList.remove('hidden');
+      }
+      
+      else if (rect.top > windowHeight || rect.top < 0) {
+        element.classList.add('hidden');
+        element.classList.remove('visible');
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  </script>
+
+</body>
+</html>
